@@ -18,25 +18,40 @@ public class Fecha {
 	 
  }
  public boolean FechaCorrecta() {
-	 boolean Bien=true;
-	 return Bien;
+	 if(Mes>=1 && Mes <=12) {
+		 if(Dia>=1 && Dia<= diasEnMes(Mes)) {
+			 return true;
+		 }
+	 }
+	 return false;
  }
- public String DiaSiguiente() {
-	 String FechS="dd/mm/aaaa";
-	 return FechS;
+ private boolean esBisiesto() {
+	 return(Anio % 4 ==0);
  }
-public int getDia() {
-	return Dia;
-}
-public int getMes() {
-	return Mes;
-}
-public int getAnio() {
-	return Anio;
+ private int diasEnMes(int Mes) {
+	 int[] diasPorMes = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+	 if(Mes == 2 && esBisiesto()) {
+		 return 29;
+	 }
+	 return diasPorMes[Mes];
+ }
+ public String ToString() {
+	 return String.format("%02d-%02d-%d",Dia,Mes,Anio);
+ }
+public void DiaSiguiente() {
+	if(FechaCorrecta()) {
+		Dia++;
+		if(Dia> diasEnMes(Mes)) {
+			Dia=1;
+			Mes++;
+			if(Mes>12) {
+				Mes=1;
+				Anio++;
+			}
+		}
+	}
 }
 
 	
 }
-
- 
 
