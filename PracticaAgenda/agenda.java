@@ -25,6 +25,14 @@ public String getNombre() {
 public void setNombre(String nombre) {
 	Nombre = nombre;
 }
+public String getTelefono() {
+    return Telefono;
+}
+
+public void setTelefono(String telefono) {
+   Telefono=telefono;
+}
+
 
 
 }
